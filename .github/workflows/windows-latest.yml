@@ -1,0 +1,107 @@
+name: Windows Latest Build
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-latest-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows:
+    name: Build Windows Client
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Flutter (latest stable)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+          pub-cache: true
+
+      - name: Show toolchain versions
+        shell: pwsh
+        run: |
+          flutter --version
+          dart --version
+
+      - name: Enable Windows desktop
+        shell: pwsh
+        run: |
+          flutter config --enable-windows-desktop
+          flutter doctor -v
+
+      - name: Get Flutter dependencies
+        shell: pwsh
+        run: |
+          flutter pub get
+
+      - name: Build Windows release
+        shell: pwsh
+        run: |
+          flutter build windows --release
+
+      - name: Prepare artifact
+        shell: pwsh
+        run: |
+          $source = "build/windows/x64/runner/Release"
+
+          if (-not (Test-Path $source)) {
+            Write-Error "Windows release directory not found: $source"
+            exit 1
+          }
+
+          $shortSha = "${{ github.sha }}".Substring(0, 7)
+          $artifactName = "Kelivo-windows-master-$shortSha"
+
+          $artifactRoot = "artifacts"
+          $artifactDir = Join-Path $artifactRoot $artifactName
+
+          New-Item -ItemType Directory -Force -Path $artifactDir | Out-Null
+
+          Copy-Item `
+            -Path "$source\*" `
+            -Destination $artifactDir `
+            -Recurse `
+            -Force
+
+          @"
+          Kelivo Windows CI Build
+
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref_name }}
+          Workflow: ${{ github.workflow }}
+          Run: ${{ github.run_id }}
+          Flutter channel: stable (latest)
+          "@ | Set-Content "$artifactDir\BUILD-INFO.txt"
+
+          $zipPath = "$artifactRoot\$artifactName.zip"
+
+          Compress-Archive `
+            -Path "$artifactDir\*" `
+            -DestinationPath $zipPath `
+            -CompressionLevel Optimal `
+            -Force
+
+          Write-Host "Artifact created:"
+          Write-Host $zipPath
+
+      - name: Upload Windows ZIP
+        uses: actions/upload-artifact@v5
+        with:
+          name: Kelivo-windows-master-${{ github.sha }}
+          path: artifacts/*.zip
+          if-no-files-found: error
+          retention-days: 14
