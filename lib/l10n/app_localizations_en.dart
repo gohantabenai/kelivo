@@ -5721,6 +5721,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get asrServicesOpenAiSubtitle => 'Low-latency streaming transcription';
 
   @override
+  String get asrServicesGroqSubtitle => 'Whisper segmented transcription';
+
+  @override
+  String get asrServicesMistralSubtitle => 'Voxtral segmented transcription';
+
+  @override
   String get asrServicesDashScopeTitle => 'DashScope';
 
   @override
@@ -6277,6 +6283,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Ollama web search API. Augments models with up-to-date information.';
 
   @override
+  String get searchProviderDeepSeekDescription =>
+      'DeepSeek official web search and page fetch APIs. Uses a DeepSeek API key.';
+
+  @override
   String get searchProviderJinaDescription =>
       'AI search foundation with embeddings, rerankers, web reader, deepsearch, and small language models. Multilingual and multimodal.';
 
@@ -6312,6 +6322,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchServiceNameOllama => 'Ollama';
+
+  @override
+  String get searchServiceNameDeepSeek => 'DeepSeek';
 
   @override
   String get searchServiceNameJina => 'Jina';
@@ -7556,7 +7569,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get memorySettingsInjectionMaxItemsSubtitle =>
-      'When a type exceeds this limit, only the newest items are injected. The rest can be fetched with memory_search_profile. A larger number is more complete but uses more tokens. If you customized the rules prompt, update it or restore the default.';
+      'This limit applies to types not selected for full injection. When a type exceeds this limit, only the newest items are injected. The rest can be fetched with memory_search_profile. A larger number is more complete but uses more tokens. If you customized the rules prompt, update it or restore the default.';
+
+  @override
+  String get memorySettingsFullInjectionTypesTitle =>
+      'Always inject these types';
+
+  @override
+  String get memorySettingsFullInjectionTypesSubtitle =>
+      'Select one or more types to inject all their active memories visible to the current assistant. These types ignore the item limit and use more context and tokens.';
 
   @override
   String memorySettingsInjectionMaxItemsOption(int n) {
@@ -10218,6 +10239,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get workspaceEnvErrorExtractFailed =>
       'Could not extract the sandbox image.';
+
+  @override
+  String get workspaceEnvErrorCleanupFailed =>
+      'Could not remove old sandbox files. Please try again.';
+
+  @override
+  String get workspaceEnvCleanupIncomplete =>
+      'The sandbox is ready, but some old files could not be removed. They still take up storage space.';
+
+  @override
+  String get workspaceEnvErrorResetFailed =>
+      'Could not finish resetting the sandbox. Please try again.';
 
   @override
   String get workspaceEnvErrorPatchFailed =>
@@ -13039,4 +13072,96 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mcpOAuthExchangingToken => 'Completing sign-in…';
+
+  @override
+  String get markdownPlaygroundTitle => 'Markdown Playground';
+
+  @override
+  String get markdownPlaygroundSource => 'Markdown source';
+
+  @override
+  String get markdownPlaygroundPreview => 'Preview';
+
+  @override
+  String get markdownPlaygroundAst => 'AST';
+
+  @override
+  String get markdownPlaygroundPlay => 'Stream characters';
+
+  @override
+  String get markdownPlaygroundPause => 'Pause';
+
+  @override
+  String get markdownPlaygroundResume => 'Resume';
+
+  @override
+  String get markdownPlaygroundShowAll => 'Show complete';
+
+  @override
+  String get markdownPlaygroundWidth => 'Preview width';
+
+  @override
+  String get markdownPlaygroundTheme => 'Preview theme';
+
+  @override
+  String get markdownPlaygroundPlain => 'Selected plain text';
+
+  @override
+  String get markdownPlaygroundMarkdown => 'Selected Markdown';
+
+  @override
+  String get markdownPlaygroundSelectionHint =>
+      'Select text in the preview to inspect copied content.';
+
+  @override
+  String get markdownPlaygroundEmpty => 'Enter Markdown to preview it.';
+
+  @override
+  String markdownPlaygroundProgress(int shown, int total) {
+    return 'Input $shown / $total';
+  }
+
+  @override
+  String get markdownCopyMarkdownAction => 'Copy Markdown';
+
+  @override
+  String get markdownCopyCsvAction => 'Copy CSV';
+
+  @override
+  String get markdownCopyImageAction => 'Copy image';
+
+  @override
+  String get markdownCodeLabel => 'Code';
+
+  @override
+  String get markdownDetailsLabel => 'Details';
+
+  @override
+  String markdownMoreRows(int count) {
+    return 'Show $count more rows';
+  }
+
+  @override
+  String get markdownNoteLabel => 'Note';
+
+  @override
+  String get markdownTipLabel => 'Tip';
+
+  @override
+  String get markdownImportantLabel => 'Important';
+
+  @override
+  String get markdownWarningLabel => 'Warning';
+
+  @override
+  String get markdownCautionLabel => 'Caution';
+
+  @override
+  String get markdownDangerLabel => 'Danger';
+
+  @override
+  String get markdownCopyRichTextAction => 'Copy rich text';
+
+  @override
+  String get markdownCopySelectionFailed => 'Could not copy the selected text.';
 }

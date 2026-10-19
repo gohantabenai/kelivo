@@ -10435,6 +10435,18 @@ abstract class AppLocalizations {
   /// **'Low-latency streaming transcription'**
   String get asrServicesOpenAiSubtitle;
 
+  /// No description provided for @asrServicesGroqSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Whisper segmented transcription'**
+  String get asrServicesGroqSubtitle;
+
+  /// No description provided for @asrServicesMistralSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voxtral segmented transcription'**
+  String get asrServicesMistralSubtitle;
+
   /// No description provided for @asrServicesDashScopeTitle.
   ///
   /// In en, this message translates to:
@@ -11443,6 +11455,12 @@ abstract class AppLocalizations {
   /// **'Ollama web search API. Augments models with up-to-date information.'**
   String get searchProviderOllamaDescription;
 
+  /// No description provided for @searchProviderDeepSeekDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'DeepSeek official web search and page fetch APIs. Uses a DeepSeek API key.'**
+  String get searchProviderDeepSeekDescription;
+
   /// No description provided for @searchProviderJinaDescription.
   ///
   /// In en, this message translates to:
@@ -11514,6 +11532,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ollama'**
   String get searchServiceNameOllama;
+
+  /// No description provided for @searchServiceNameDeepSeek.
+  ///
+  /// In en, this message translates to:
+  /// **'DeepSeek'**
+  String get searchServiceNameDeepSeek;
 
   /// No description provided for @searchServiceNameJina.
   ///
@@ -13768,8 +13792,20 @@ abstract class AppLocalizations {
   /// No description provided for @memorySettingsInjectionMaxItemsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'When a type exceeds this limit, only the newest items are injected. The rest can be fetched with memory_search_profile. A larger number is more complete but uses more tokens. If you customized the rules prompt, update it or restore the default.'**
+  /// **'This limit applies to types not selected for full injection. When a type exceeds this limit, only the newest items are injected. The rest can be fetched with memory_search_profile. A larger number is more complete but uses more tokens. If you customized the rules prompt, update it or restore the default.'**
   String get memorySettingsInjectionMaxItemsSubtitle;
+
+  /// No description provided for @memorySettingsFullInjectionTypesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Always inject these types'**
+  String get memorySettingsFullInjectionTypesTitle;
+
+  /// No description provided for @memorySettingsFullInjectionTypesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select one or more types to inject all their active memories visible to the current assistant. These types ignore the item limit and use more context and tokens.'**
+  String get memorySettingsFullInjectionTypesSubtitle;
 
   /// No description provided for @memorySettingsInjectionMaxItemsOption.
   ///
@@ -18324,6 +18360,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not extract the sandbox image.'**
   String get workspaceEnvErrorExtractFailed;
+
+  /// No description provided for @workspaceEnvErrorCleanupFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not remove old sandbox files. Please try again.'**
+  String get workspaceEnvErrorCleanupFailed;
+
+  /// No description provided for @workspaceEnvCleanupIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'The sandbox is ready, but some old files could not be removed. They still take up storage space.'**
+  String get workspaceEnvCleanupIncomplete;
+
+  /// No description provided for @workspaceEnvErrorResetFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not finish resetting the sandbox. Please try again.'**
+  String get workspaceEnvErrorResetFailed;
 
   /// No description provided for @workspaceEnvErrorPatchFailed.
   ///
@@ -23279,6 +23333,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Completing sign-in…'**
   String get mcpOAuthExchangingToken;
+
+  /// No description provided for @markdownPlaygroundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Markdown Playground'**
+  String get markdownPlaygroundTitle;
+
+  /// No description provided for @markdownPlaygroundSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Markdown source'**
+  String get markdownPlaygroundSource;
+
+  /// No description provided for @markdownPlaygroundPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get markdownPlaygroundPreview;
+
+  /// No description provided for @markdownPlaygroundAst.
+  ///
+  /// In en, this message translates to:
+  /// **'AST'**
+  String get markdownPlaygroundAst;
+
+  /// No description provided for @markdownPlaygroundPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Stream characters'**
+  String get markdownPlaygroundPlay;
+
+  /// No description provided for @markdownPlaygroundPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get markdownPlaygroundPause;
+
+  /// No description provided for @markdownPlaygroundResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get markdownPlaygroundResume;
+
+  /// No description provided for @markdownPlaygroundShowAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Show complete'**
+  String get markdownPlaygroundShowAll;
+
+  /// No description provided for @markdownPlaygroundWidth.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview width'**
+  String get markdownPlaygroundWidth;
+
+  /// No description provided for @markdownPlaygroundTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview theme'**
+  String get markdownPlaygroundTheme;
+
+  /// No description provided for @markdownPlaygroundPlain.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected plain text'**
+  String get markdownPlaygroundPlain;
+
+  /// No description provided for @markdownPlaygroundMarkdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Markdown'**
+  String get markdownPlaygroundMarkdown;
+
+  /// No description provided for @markdownPlaygroundSelectionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select text in the preview to inspect copied content.'**
+  String get markdownPlaygroundSelectionHint;
+
+  /// No description provided for @markdownPlaygroundEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Markdown to preview it.'**
+  String get markdownPlaygroundEmpty;
+
+  /// No description provided for @markdownPlaygroundProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Input {shown} / {total}'**
+  String markdownPlaygroundProgress(int shown, int total);
+
+  /// No description provided for @markdownCopyMarkdownAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Markdown'**
+  String get markdownCopyMarkdownAction;
+
+  /// No description provided for @markdownCopyCsvAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy CSV'**
+  String get markdownCopyCsvAction;
+
+  /// No description provided for @markdownCopyImageAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy image'**
+  String get markdownCopyImageAction;
+
+  /// No description provided for @markdownCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get markdownCodeLabel;
+
+  /// No description provided for @markdownDetailsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get markdownDetailsLabel;
+
+  /// No description provided for @markdownMoreRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Show {count} more rows'**
+  String markdownMoreRows(int count);
+
+  /// No description provided for @markdownNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get markdownNoteLabel;
+
+  /// No description provided for @markdownTipLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip'**
+  String get markdownTipLabel;
+
+  /// No description provided for @markdownImportantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Important'**
+  String get markdownImportantLabel;
+
+  /// No description provided for @markdownWarningLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get markdownWarningLabel;
+
+  /// No description provided for @markdownCautionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Caution'**
+  String get markdownCautionLabel;
+
+  /// No description provided for @markdownDangerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Danger'**
+  String get markdownDangerLabel;
+
+  /// No description provided for @markdownCopyRichTextAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy rich text'**
+  String get markdownCopyRichTextAction;
+
+  /// No description provided for @markdownCopySelectionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not copy the selected text.'**
+  String get markdownCopySelectionFailed;
 }
 
 class _AppLocalizationsDelegate
