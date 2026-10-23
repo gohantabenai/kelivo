@@ -55,7 +55,7 @@ Widget _diagram(
     extensions: kelivoMarkdownExtensions,
     options: markdownCodeOptions(context.watch<SettingsProvider>()),
     labels: markdownLabels(context),
-    highlighter: const KelivoCodeHighlighter(),
+    highlighter: KelivoCodeHighlighter.forTheme(rendering.theme),
     streaming: rendering.streaming,
     exporting: ExportCaptureScope.of(context),
   );
@@ -100,12 +100,13 @@ Widget _plantUml(
   final theme = rendering.theme;
   final streaming = rendering.streaming;
   return PlantUMLBlock(
+    theme: theme,
     code: node.code,
     codeBuilder: (_) => MarkstreamCodeContent(
       node: node,
       theme: theme,
       streaming: streaming,
-      highlighter: const KelivoCodeHighlighter(),
+      highlighter: KelivoCodeHighlighter.forTheme(theme),
       wrap: false,
     ),
   );
