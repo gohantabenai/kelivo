@@ -1,3 +1,4 @@
+import 'package:Kelivo/core/models/tool_permission_mode.dart';
 import 'package:sqlite3/sqlite3.dart' as composer_sqlite;
 import 'dart:async';
 import 'dart:convert';
@@ -1270,6 +1271,9 @@ class DataSync {
       entries[_manifestEntryName] = writer.addFile(
         manifestFile,
         _manifestEntryName,
+        // Packing progress counts the source files measured before writing.
+        // Generated metadata must not exceed that total.
+        reportProgress: false,
       );
       writer.closeSync();
       return entries;
@@ -2789,7 +2793,7 @@ class DataSync {
         (entry as Map).cast<String, dynamic>(),
       );
       return conversation.copyWith(
-        extras: {...conversation.extras}..remove('workspace.allowAll'),
+        extras: ToolPermissionMode.withoutGrant(conversation.extras),
       );
     }).toList();
 
@@ -3902,7 +3906,11 @@ class _StreamingZipWriter {
   final List<_StreamingZipEntry> _entries = <_StreamingZipEntry>[];
   bool _closed = false;
 
-  _BackupEntryMetadata addFile(File file, String entryName) {
+  _BackupEntryMetadata addFile(
+    File file,
+    String entryName, {
+    bool reportProgress = true,
+  }) {
     if (_closed) {
       throw StateError('Cannot add files after the ZIP writer is closed.');
     }
@@ -3932,7 +3940,11 @@ class _StreamingZipWriter {
       usesZip64: usesZip64Entry,
     );
 
-    final written = _writeDeflatedFile(file, entryName);
+    final written = _writeDeflatedFile(
+      file,
+      entryName,
+      reportProgress: reportProgress,
+    );
     _writeDataDescriptor(written, usesZip64: usesZip64Entry);
 
     _entries.add(
@@ -3999,7 +4011,11 @@ class _StreamingZipWriter {
     }
   }
 
-  _StreamingZipWrittenFile _writeDeflatedFile(File file, String entryName) {
+  _StreamingZipWrittenFile _writeDeflatedFile(
+    File file,
+    String entryName, {
+    required bool reportProgress,
+  }) {
     final compressedSink = _CountingOutputSink(_output);
     final inputSink = ZLibCodec(
       level: ZLibOption.defaultLevel,
@@ -4021,7 +4037,11 @@ class _StreamingZipWriter {
         uncompressedSize += read;
         hashSink.add(chunk);
         inputSink.add(chunk);
-        meter?.add(read, detail: entryName);
+        if (reportProgress) {
+          meter?.add(read, detail: entryName);
+        } else {
+          meter?.ctx?.throwIfCancelled();
+        }
       }
       hashSink.close();
       inputSink.close();

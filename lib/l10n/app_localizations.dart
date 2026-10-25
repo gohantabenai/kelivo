@@ -313,7 +313,7 @@ abstract class AppLocalizations {
   /// No description provided for @storageSpaceLoadFailed.
   ///
   /// In en, this message translates to:
-  /// **'Failed to load storage usage'**
+  /// **'Could not load files or check which images are in use. Please refresh and try again.'**
   String get storageSpaceLoadFailed;
 
   /// No description provided for @storageSpaceTotalLabel.
@@ -436,12 +436,6 @@ abstract class AppLocalizations {
   /// **'Completed restore snapshots'**
   String get storageSpaceSubCompletedRestoreRuns;
 
-  /// No description provided for @storageSpaceCategoryAssistantData.
-  ///
-  /// In en, this message translates to:
-  /// **'Assistants'**
-  String get storageSpaceCategoryAssistantData;
-
   /// No description provided for @storageSpaceCategoryCache.
   ///
   /// In en, this message translates to:
@@ -519,18 +513,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shared memory index'**
   String get storageSpaceSubChatSharedMemory;
-
-  /// No description provided for @storageSpaceSubAssistantAvatars.
-  ///
-  /// In en, this message translates to:
-  /// **'Avatars'**
-  String get storageSpaceSubAssistantAvatars;
-
-  /// No description provided for @storageSpaceSubAssistantImages.
-  ///
-  /// In en, this message translates to:
-  /// **'Images'**
-  String get storageSpaceSubAssistantImages;
 
   /// No description provided for @storageSpaceSubCacheAvatars.
   ///
@@ -706,29 +688,65 @@ abstract class AppLocalizations {
   /// **'{count} items'**
   String storageSpaceUploadsCount(int count);
 
-  /// No description provided for @storageSpaceSourceLabel.
+  /// No description provided for @storageSpaceImageTypeLabel.
   ///
   /// In en, this message translates to:
-  /// **'Source'**
-  String get storageSpaceSourceLabel;
+  /// **'Type'**
+  String get storageSpaceImageTypeLabel;
 
-  /// No description provided for @storageSpaceSourceAll.
+  /// No description provided for @storageSpaceImageTypeAll.
   ///
   /// In en, this message translates to:
   /// **'All'**
-  String get storageSpaceSourceAll;
+  String get storageSpaceImageTypeAll;
 
-  /// No description provided for @storageSpaceSourceUserUpload.
+  /// No description provided for @storageSpaceImageTypeChat.
   ///
   /// In en, this message translates to:
-  /// **'User uploads'**
-  String get storageSpaceSourceUserUpload;
+  /// **'Chat images'**
+  String get storageSpaceImageTypeChat;
 
-  /// No description provided for @storageSpaceSourceAssistant.
+  /// No description provided for @storageSpaceImageTypeTool.
   ///
   /// In en, this message translates to:
-  /// **'Assistant'**
-  String get storageSpaceSourceAssistant;
+  /// **'Tool images'**
+  String get storageSpaceImageTypeTool;
+
+  /// No description provided for @storageSpaceImageTypeAvatar.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatars & backgrounds'**
+  String get storageSpaceImageTypeAvatar;
+
+  /// No description provided for @storageSpaceImageInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'In use'**
+  String get storageSpaceImageInUse;
+
+  /// No description provided for @storageSpaceImageInUseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Change or remove this avatar, background, or icon in its settings before deleting it.'**
+  String get storageSpaceImageInUseHint;
+
+  /// No description provided for @storageSpaceImagesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting images affects chat history and tool results. Avatars and backgrounds in use are protected.'**
+  String get storageSpaceImagesHint;
+
+  /// No description provided for @storageSpaceDeleteImagesConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {count} images? Related chat images, tool screenshots, and conversation copies will no longer be available. Avatars and backgrounds in use will be kept.'**
+  String storageSpaceDeleteImagesConfirmMessage(int count);
+
+  /// No description provided for @storageSpaceDeletedUploadsPartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted {deleted} items; kept {kept} items that are in use or could not be deleted.'**
+  String storageSpaceDeletedUploadsPartial(int deleted, int kept);
 
   /// No description provided for @storageSpaceSortLabel.
   ///
@@ -3202,6 +3220,24 @@ abstract class AppLocalizations {
   /// **'The restore could not be completed. Kelivo verified and kept your previous data.'**
   String get backupRestoreRolledBackContent;
 
+  /// No description provided for @backupRestoreDirectoryBlockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore is waiting for a folder'**
+  String get backupRestoreDirectoryBlockedTitle;
+
+  /// No description provided for @backupRestoreDirectoryBlockedContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Windows could not move the folder below. Close terminals, editors, or other programs using it, then continue restoring. If it is still blocked, check that your account can move the folder. Your restore progress has been kept.'**
+  String get backupRestoreDirectoryBlockedContent;
+
+  /// No description provided for @backupRestoreContinueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue restore'**
+  String get backupRestoreContinueButton;
+
   /// No description provided for @backupRestoreFailureTitle.
   ///
   /// In en, this message translates to:
@@ -4405,7 +4441,7 @@ abstract class AppLocalizations {
   /// No description provided for @compressContextDesc.
   ///
   /// In en, this message translates to:
-  /// **'Summarize and start a new chat'**
+  /// **'Create a summary you can review and undo'**
   String get compressContextDesc;
 
   /// No description provided for @clearContextDesc.
@@ -4419,12 +4455,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Context Management'**
   String get contextManagement;
-
-  /// No description provided for @compressingContext.
-  ///
-  /// In en, this message translates to:
-  /// **'Compressing context...'**
-  String get compressingContext;
 
   /// No description provided for @compressContextFailed.
   ///
@@ -4465,25 +4495,25 @@ abstract class AppLocalizations {
   /// No description provided for @compressContextOptionsDesc.
   ///
   /// In en, this message translates to:
-  /// **'Choose which part of the current chat is sent to the compression model.'**
+  /// **'Create an editable, reversible summary in this chat. Original messages are kept.'**
   String get compressContextOptionsDesc;
 
   /// No description provided for @compressContextKeepStart.
   ///
   /// In en, this message translates to:
-  /// **'Start'**
+  /// **'Start sample'**
   String get compressContextKeepStart;
 
   /// No description provided for @compressContextKeepRecent.
   ///
   /// In en, this message translates to:
-  /// **'Recent'**
+  /// **'End sample'**
   String get compressContextKeepRecent;
 
   /// No description provided for @compressContextUnlimited.
   ///
   /// In en, this message translates to:
-  /// **'Unlimited'**
+  /// **'All content'**
   String get compressContextUnlimited;
 
   /// No description provided for @compressContextMaxCharsLabel.
@@ -4525,7 +4555,7 @@ abstract class AppLocalizations {
   /// No description provided for @compressContextKeepCountLabel.
   ///
   /// In en, this message translates to:
-  /// **'Keep recent messages'**
+  /// **'Recent user messages'**
   String get compressContextKeepCountLabel;
 
   /// No description provided for @compressContextKeepAllMessages.
@@ -9625,6 +9655,18 @@ abstract class AppLocalizations {
   /// **'Show the current level next to the reasoning icon in the input bar'**
   String get displaySettingsShowReasoningLevelBadgeSubtitle;
 
+  /// No description provided for @displaySettingsPageIosNativeSelectionMenuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS 26+ native selection menu'**
+  String get displaySettingsPageIosNativeSelectionMenuTitle;
+
+  /// No description provided for @displaySettingsPageIosNativeSelectionMenuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to input and messages. Turn off if menus feel slow.'**
+  String get displaySettingsPageIosNativeSelectionMenuSubtitle;
+
   /// No description provided for @displaySettingsPageAutoCollapseThinkingTitle.
   ///
   /// In en, this message translates to:
@@ -9976,20 +10018,20 @@ abstract class AppLocalizations {
   /// No description provided for @displaySettingsPageAutoScrollEnableTitle.
   ///
   /// In en, this message translates to:
-  /// **'Auto-scroll to bottom'**
+  /// **'Auto-follow bottom'**
   String get displaySettingsPageAutoScrollEnableTitle;
 
-  /// No description provided for @displaySettingsPageAutoScrollIdleTitle.
+  /// No description provided for @displaySettingsPageAutoScrollSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Auto-Scroll Back Delay'**
-  String get displaySettingsPageAutoScrollIdleTitle;
+  /// **'While streaming, follow new content when at the bottom. Scrolling up pauses following until you return to the bottom. When off, new content does not scroll automatically.'**
+  String get displaySettingsPageAutoScrollSubtitle;
 
-  /// No description provided for @displaySettingsPageAutoScrollIdleSubtitle.
+  /// No description provided for @displaySettingsPageAutoScrollEnabledLabel.
   ///
   /// In en, this message translates to:
-  /// **'Wait time after user scroll before jumping to bottom'**
-  String get displaySettingsPageAutoScrollIdleSubtitle;
+  /// **'On'**
+  String get displaySettingsPageAutoScrollEnabledLabel;
 
   /// No description provided for @displaySettingsPageAutoScrollDisabledLabel.
   ///
@@ -15217,6 +15259,60 @@ abstract class AppLocalizations {
   /// **'Enter a number between 1 and 20'**
   String get assistantEditOrganizeFrequencyCustomInvalid;
 
+  /// No description provided for @worldBookCopyEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy to…'**
+  String get worldBookCopyEntries;
+
+  /// No description provided for @worldBookMoveEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to…'**
+  String get worldBookMoveEntries;
+
+  /// No description provided for @worldBookSelectEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'Select entries'**
+  String get worldBookSelectEntries;
+
+  /// No description provided for @worldBookSelectedEntries.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String worldBookSelectedEntries(int count);
+
+  /// No description provided for @worldBookSelectionDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get worldBookSelectionDone;
+
+  /// No description provided for @worldBookNoMoveTargets.
+  ///
+  /// In en, this message translates to:
+  /// **'Create another world book to move entries into it.'**
+  String get worldBookNoMoveTargets;
+
+  /// No description provided for @worldBookEntriesCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Copied 1 entry} other{Copied {count} entries}}'**
+  String worldBookEntriesCopied(int count);
+
+  /// No description provided for @worldBookEntriesMoved.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Moved 1 entry} other{Moved {count} entries}}'**
+  String worldBookEntriesMoved(int count);
+
+  /// No description provided for @worldBookTransferFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save the entries. Please try again.'**
+  String get worldBookTransferFailed;
+
   /// No description provided for @worldBookTitle.
   ///
   /// In en, this message translates to:
@@ -15510,12 +15606,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Waiting for approval'**
   String get toolApprovalPending;
-
-  /// No description provided for @toolApprovalApprove.
-  ///
-  /// In en, this message translates to:
-  /// **'Approve'**
-  String get toolApprovalApprove;
 
   /// No description provided for @toolApprovalDeny.
   ///
@@ -17905,12 +17995,6 @@ abstract class AppLocalizations {
   /// **'image'**
   String get workspaceToolImageTag;
 
-  /// No description provided for @workspaceToolAllowAll.
-  ///
-  /// In en, this message translates to:
-  /// **'Allow all this session'**
-  String get workspaceToolAllowAll;
-
   /// No description provided for @workspaceToolStdout.
   ///
   /// In en, this message translates to:
@@ -18442,7 +18526,7 @@ abstract class AppLocalizations {
   /// No description provided for @workspaceEnvNativeShellApproval.
   ///
   /// In en, this message translates to:
-  /// **'The shell tool needs approval unless this session allows all tools.'**
+  /// **'The shell tool needs approval in Ask for approval mode.'**
   String get workspaceEnvNativeShellApproval;
 
   /// No description provided for @workspaceEnvDownloadProgress.
@@ -18964,18 +19048,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Skills'**
   String get workspaceEntrySessionSkills;
-
-  /// No description provided for @workspaceEntryAllowAll.
-  ///
-  /// In en, this message translates to:
-  /// **'Allow all this session'**
-  String get workspaceEntryAllowAll;
-
-  /// No description provided for @workspaceEntryAllowAllSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Shell commands in this conversation will run without approval.'**
-  String get workspaceEntryAllowAllSubtitle;
 
   /// No description provided for @workspaceEntryEnvironment.
   ///
@@ -19854,7 +19926,7 @@ abstract class AppLocalizations {
   /// No description provided for @workspaceEnvNativeUnsandboxed.
   ///
   /// In en, this message translates to:
-  /// **'Commands run on this computer, not in a sandbox, and need approval unless this session allows all tools.'**
+  /// **'Commands run on this computer without a sandbox and need approval unless this chat has full access.'**
   String get workspaceEnvNativeUnsandboxed;
 
   /// No description provided for @workspaceEnvRootfsTitle.
@@ -23783,6 +23855,2094 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Decrypting backup'**
   String get backupProgressDecrypting;
+
+  /// No description provided for @mcpPageStatusFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection failed'**
+  String get mcpPageStatusFailed;
+
+  /// No description provided for @mcpPageCardToolsShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools {enabled}/{total}'**
+  String mcpPageCardToolsShort(int enabled, int total);
+
+  /// No description provided for @mcpPageSelectServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Select {name}'**
+  String mcpPageSelectServer(String name);
+
+  /// No description provided for @mcpIconTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Server icon'**
+  String get mcpIconTitle;
+
+  /// No description provided for @mcpIconInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to use this image. Choose a valid image up to 10 MB.'**
+  String get mcpIconInvalid;
+
+  /// No description provided for @mcpSelectServers.
+  ///
+  /// In en, this message translates to:
+  /// **'Select servers'**
+  String get mcpSelectServers;
+
+  /// No description provided for @mcpMoveToGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to group'**
+  String get mcpMoveToGroup;
+
+  /// No description provided for @mcpRenameGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename group'**
+  String get mcpRenameGroup;
+
+  /// No description provided for @mcpDeleteGroupConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Servers in this group will be moved to Other. The servers will not be deleted.'**
+  String get mcpDeleteGroupConfirm;
+
+  /// No description provided for @mcpGroupNameInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a nonempty, unique group name.'**
+  String get mcpGroupNameInvalid;
+
+  /// No description provided for @mcpEnableSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable'**
+  String get mcpEnableSelected;
+
+  /// No description provided for @mcpDisableSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Disable'**
+  String get mcpDisableSelected;
+
+  /// No description provided for @mcpDeleteSelectedConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {count} selected servers?'**
+  String mcpDeleteSelectedConfirm(int count);
+
+  /// No description provided for @browserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browser'**
+  String get browserTitle;
+
+  /// No description provided for @browserSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search or enter website'**
+  String get browserSearchHint;
+
+  /// No description provided for @browserStartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where to next?'**
+  String get browserStartTitle;
+
+  /// No description provided for @browserStartSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse freely. Let your agent help when you need it.'**
+  String get browserStartSubtitle;
+
+  /// No description provided for @browserNewTab.
+  ///
+  /// In en, this message translates to:
+  /// **'New tab'**
+  String get browserNewTab;
+
+  /// No description provided for @browserTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Tabs'**
+  String get browserTabs;
+
+  /// No description provided for @browserCloseTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Close tab'**
+  String get browserCloseTab;
+
+  /// No description provided for @browserClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close browser'**
+  String get browserClose;
+
+  /// No description provided for @browserBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get browserBack;
+
+  /// No description provided for @browserForward.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward'**
+  String get browserForward;
+
+  /// No description provided for @browserReload.
+  ///
+  /// In en, this message translates to:
+  /// **'Reload'**
+  String get browserReload;
+
+  /// No description provided for @browserStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop loading'**
+  String get browserStop;
+
+  /// No description provided for @browserMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get browserMore;
+
+  /// No description provided for @browserBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarks'**
+  String get browserBookmarks;
+
+  /// No description provided for @browserHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get browserHistory;
+
+  /// No description provided for @browserSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Browser settings'**
+  String get browserSettings;
+
+  /// No description provided for @browserAddBookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Add bookmark'**
+  String get browserAddBookmark;
+
+  /// No description provided for @browserRemoveBookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove bookmark'**
+  String get browserRemoveBookmark;
+
+  /// No description provided for @browserNoBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Your favorite places, all together.'**
+  String get browserNoBookmarks;
+
+  /// No description provided for @browserNoHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Your browsing history appears here.'**
+  String get browserNoHistory;
+
+  /// No description provided for @browserSearchLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Search saved pages'**
+  String get browserSearchLibrary;
+
+  /// No description provided for @browserClearHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear history'**
+  String get browserClearHistory;
+
+  /// No description provided for @browserClearHistoryConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all browsing history? Bookmarks will be kept.'**
+  String get browserClearHistoryConfirm;
+
+  /// No description provided for @browserToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get browserToday;
+
+  /// No description provided for @browserYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get browserYesterday;
+
+  /// No description provided for @browserDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get browserDelete;
+
+  /// No description provided for @browserCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get browserCancel;
+
+  /// No description provided for @browserDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get browserDone;
+
+  /// No description provided for @browserFind.
+  ///
+  /// In en, this message translates to:
+  /// **'Find on page'**
+  String get browserFind;
+
+  /// No description provided for @browserFindPreviousMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous match'**
+  String get browserFindPreviousMatch;
+
+  /// No description provided for @browserFindNextMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Next match'**
+  String get browserFindNextMatch;
+
+  /// No description provided for @browserFindHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Find text'**
+  String get browserFindHint;
+
+  /// No description provided for @browserSearchEngine.
+  ///
+  /// In en, this message translates to:
+  /// **'Search engine'**
+  String get browserSearchEngine;
+
+  /// No description provided for @browserDesktopMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Desktop website'**
+  String get browserDesktopMode;
+
+  /// No description provided for @browserDesktopModeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Reload open pages with a desktop user agent.'**
+  String get browserDesktopModeDescription;
+
+  /// No description provided for @browserRestoreTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore tabs'**
+  String get browserRestoreTabs;
+
+  /// No description provided for @browserRestoreTabsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen your tabs when Kelivo starts.'**
+  String get browserRestoreTabsDescription;
+
+  /// No description provided for @browserSaveHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Save history'**
+  String get browserSaveHistory;
+
+  /// No description provided for @browserSaveHistoryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep a local record of the pages you visit.'**
+  String get browserSaveHistoryDescription;
+
+  /// No description provided for @browserClearData.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear website data'**
+  String get browserClearData;
+
+  /// No description provided for @browserClearDataConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear cookies, storage and cache, and close all tabs? You will be signed out of websites.'**
+  String get browserClearDataConfirm;
+
+  /// No description provided for @browserDataCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Website data cleared'**
+  String get browserDataCleared;
+
+  /// No description provided for @browserAgentControl.
+  ///
+  /// In en, this message translates to:
+  /// **'Agent control'**
+  String get browserAgentControl;
+
+  /// No description provided for @browserAgentWorking.
+  ///
+  /// In en, this message translates to:
+  /// **'AI is working'**
+  String get browserAgentWorking;
+
+  /// No description provided for @browserTakeOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Take over'**
+  String get browserTakeOver;
+
+  /// No description provided for @browserAgentPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'AI actions paused'**
+  String get browserAgentPaused;
+
+  /// No description provided for @browserAgentTimedOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation timed out; AI paused'**
+  String get browserAgentTimedOut;
+
+  /// No description provided for @browserAllowAgent.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow to continue'**
+  String get browserAllowAgent;
+
+  /// No description provided for @browserAgentDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a task in chat to let AI use the browser. Allowing it to continue only removes the pause; it does not send a message or start a task.'**
+  String get browserAgentDescription;
+
+  /// No description provided for @browserOpenExternal.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in default browser'**
+  String get browserOpenExternal;
+
+  /// No description provided for @browserCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get browserCopyLink;
+
+  /// No description provided for @browserLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get browserLinkCopied;
+
+  /// No description provided for @browserUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'The embedded browser is not available on this platform.'**
+  String get browserUnsupported;
+
+  /// No description provided for @browserLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'This page could not be loaded'**
+  String get browserLoadFailed;
+
+  /// No description provided for @browserRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get browserRetry;
+
+  /// No description provided for @browserFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get browserFavorites;
+
+  /// No description provided for @browserEditBookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit bookmark'**
+  String get browserEditBookmark;
+
+  /// No description provided for @browserBookmarkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get browserBookmarkTitle;
+
+  /// No description provided for @browserBookmarkUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get browserBookmarkUrl;
+
+  /// No description provided for @browserSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get browserSave;
+
+  /// No description provided for @browserDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads'**
+  String get browserDownloads;
+
+  /// No description provided for @browserNoDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloaded files appear here.'**
+  String get browserNoDownloads;
+
+  /// No description provided for @browserDownloadCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel download'**
+  String get browserDownloadCancel;
+
+  /// No description provided for @browserOpenDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Open file'**
+  String get browserOpenDownload;
+
+  /// No description provided for @browserDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Download failed'**
+  String get browserDownloadFailed;
+
+  /// No description provided for @browserAgentEnableHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable the Browser tool in chat tools, then allow control here.'**
+  String get browserAgentEnableHint;
+
+  /// No description provided for @browserSessionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the browser from a conversation to allow agent control.'**
+  String get browserSessionRequired;
+
+  /// No description provided for @browserDownloadCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get browserDownloadCancelled;
+
+  /// No description provided for @browserAgentEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow assistant browser access'**
+  String get browserAgentEnabled;
+
+  /// No description provided for @browserAgentEnabledDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enabled assistants can browse and interact with pages in this browser.'**
+  String get browserAgentEnabledDescription;
+
+  /// No description provided for @browserToolTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browser control'**
+  String get browserToolTitle;
+
+  /// No description provided for @browserToolSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse and interact with signed-in pages. Enable Agent control in browser settings first.'**
+  String get browserToolSubtitle;
+
+  /// No description provided for @browserOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open browser'**
+  String get browserOpen;
+
+  /// No description provided for @browserInvalidUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid HTTP or HTTPS website address.'**
+  String get browserInvalidUrl;
+
+  /// No description provided for @browserClearDataUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Clearing all website data is not supported by the Windows browser engine.'**
+  String get browserClearDataUnavailable;
+
+  /// No description provided for @browserSurfaceStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Surface style'**
+  String get browserSurfaceStyle;
+
+  /// No description provided for @browserSurfaceLiquid.
+  ///
+  /// In en, this message translates to:
+  /// **'Liquid glass'**
+  String get browserSurfaceLiquid;
+
+  /// No description provided for @browserSurfaceFrosted.
+  ///
+  /// In en, this message translates to:
+  /// **'Frosted'**
+  String get browserSurfaceFrosted;
+
+  /// No description provided for @browserSurfaceSolid.
+  ///
+  /// In en, this message translates to:
+  /// **'Solid'**
+  String get browserSurfaceSolid;
+
+  /// No description provided for @browserPageOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Page options'**
+  String get browserPageOptions;
+
+  /// No description provided for @browserAskAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Let AI work on this page'**
+  String get browserAskAi;
+
+  /// No description provided for @browserAskAiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Return to chat, add your request, then send.'**
+  String get browserAskAiHint;
+
+  /// No description provided for @browserAskAiCurrentPage.
+  ///
+  /// In en, this message translates to:
+  /// **'the current browser page'**
+  String get browserAskAiCurrentPage;
+
+  /// No description provided for @browserAskAiUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This chat is unavailable. Open the browser from a chat first.'**
+  String get browserAskAiUnavailable;
+
+  /// No description provided for @browserAskAiEditing.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish or cancel editing the current message before adding a page task.'**
+  String get browserAskAiEditing;
+
+  /// No description provided for @browserAskAiAssistantDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Browser control in this assistant’s tools first.'**
+  String get browserAskAiAssistantDisabled;
+
+  /// No description provided for @browserAskAiBrowserDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow assistants to use the browser in browser settings first.'**
+  String get browserAskAiBrowserDisabled;
+
+  /// No description provided for @browserAskAiDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Please use the browser to work on this page:\n{page}\n\nMy request: '**
+  String browserAskAiDraft(String page);
+
+  /// No description provided for @browserOpenFullPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in full page'**
+  String get browserOpenFullPage;
+
+  /// No description provided for @browserClosePanel.
+  ///
+  /// In en, this message translates to:
+  /// **'Close browser panel'**
+  String get browserClosePanel;
+
+  /// No description provided for @browserSearchTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tabs'**
+  String get browserSearchTabs;
+
+  /// No description provided for @browserTabsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 tab} other{{count} tabs}}'**
+  String browserTabsCount(int count);
+
+  /// No description provided for @browserOpenInSidebar.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in sidebar'**
+  String get browserOpenInSidebar;
+
+  /// No description provided for @browserUserAgent.
+  ///
+  /// In en, this message translates to:
+  /// **'User agent'**
+  String get browserUserAgent;
+
+  /// No description provided for @browserUserAgentMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get browserUserAgentMobile;
+
+  /// No description provided for @browserUserAgentDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Desktop'**
+  String get browserUserAgentDesktop;
+
+  /// No description provided for @browserUserAgentCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get browserUserAgentCustom;
+
+  /// No description provided for @browserUserAgentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a custom User-Agent'**
+  String get browserUserAgentHint;
+
+  /// No description provided for @browserUserAgentInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a single line of up to 2048 printable ASCII characters.'**
+  String get browserUserAgentInvalid;
+
+  /// No description provided for @browserUserAgentDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes reload the current webpage.'**
+  String get browserUserAgentDescription;
+
+  /// No description provided for @browserStepsShowEarlier.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} earlier steps'**
+  String browserStepsShowEarlier(int count);
+
+  /// No description provided for @browserOpenThisPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in browser'**
+  String get browserOpenThisPage;
+
+  /// No description provided for @browserGroupToggleSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Show or hide browser steps'**
+  String get browserGroupToggleSemantics;
+
+  /// No description provided for @browserStepGroupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browsing'**
+  String get browserStepGroupTitle;
+
+  /// Browser page card browserStepCount
+  ///
+  /// In en, this message translates to:
+  /// **'{count} steps'**
+  String browserStepCount(int count);
+
+  /// Browser page card browserStepCurrent
+  ///
+  /// In en, this message translates to:
+  /// **'step {count}'**
+  String browserStepCurrent(int count);
+
+  /// Browser page card browserActionFailedCount
+  ///
+  /// In en, this message translates to:
+  /// **'· {count} failed'**
+  String browserActionFailedCount(int count);
+
+  /// Browser page card browserActionFailed
+  ///
+  /// In en, this message translates to:
+  /// **'{action} failed'**
+  String browserActionFailed(String action);
+
+  /// No description provided for @browserCardOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get browserCardOpen;
+
+  /// No description provided for @browserCardEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable'**
+  String get browserCardEnable;
+
+  /// Browser page card browserCardRunning
+  ///
+  /// In en, this message translates to:
+  /// **'{action}…'**
+  String browserCardRunning(String action);
+
+  /// No description provided for @browserCardLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get browserCardLive;
+
+  /// No description provided for @browserCardOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open page'**
+  String get browserCardOpenFailed;
+
+  /// No description provided for @browserCardBlankPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Blank page'**
+  String get browserCardBlankPage;
+
+  /// Browser page card browserCardTabCount
+  ///
+  /// In en, this message translates to:
+  /// **'{count} tabs'**
+  String browserCardTabCount(int count);
+
+  /// No description provided for @browserActionOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open page'**
+  String get browserActionOpen;
+
+  /// No description provided for @browserActionNewTab.
+  ///
+  /// In en, this message translates to:
+  /// **'New tab'**
+  String get browserActionNewTab;
+
+  /// No description provided for @browserActionRender.
+  ///
+  /// In en, this message translates to:
+  /// **'Render page'**
+  String get browserActionRender;
+
+  /// No description provided for @browserActionExtract.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract text'**
+  String get browserActionExtract;
+
+  /// No description provided for @browserActionScreenshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture screenshot'**
+  String get browserActionScreenshot;
+
+  /// No description provided for @browserActionSnapshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Read page structure'**
+  String get browserActionSnapshot;
+
+  /// No description provided for @browserActionClick.
+  ///
+  /// In en, this message translates to:
+  /// **'Click'**
+  String get browserActionClick;
+
+  /// No description provided for @browserActionType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get browserActionType;
+
+  /// No description provided for @browserActionSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'Select option'**
+  String get browserActionSelect;
+
+  /// No description provided for @browserActionPress.
+  ///
+  /// In en, this message translates to:
+  /// **'Press key'**
+  String get browserActionPress;
+
+  /// No description provided for @browserActionScroll.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll'**
+  String get browserActionScroll;
+
+  /// No description provided for @browserActionWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait'**
+  String get browserActionWait;
+
+  /// No description provided for @browserActionBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get browserActionBack;
+
+  /// No description provided for @browserActionForward.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward'**
+  String get browserActionForward;
+
+  /// No description provided for @browserActionReload.
+  ///
+  /// In en, this message translates to:
+  /// **'Reload'**
+  String get browserActionReload;
+
+  /// No description provided for @browserActionEvaluate.
+  ///
+  /// In en, this message translates to:
+  /// **'Run script'**
+  String get browserActionEvaluate;
+
+  /// No description provided for @browserActionSwitchTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch tab'**
+  String get browserActionSwitchTab;
+
+  /// No description provided for @browserActionCloseTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Close tab'**
+  String get browserActionCloseTab;
+
+  /// No description provided for @browserActionListTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'List tabs'**
+  String get browserActionListTabs;
+
+  /// No description provided for @browserActionUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Browser action'**
+  String get browserActionUnknown;
+
+  /// Browser page card browserMetaChars
+  ///
+  /// In en, this message translates to:
+  /// **'{count} chars'**
+  String browserMetaChars(String count);
+
+  /// Browser page card browserMetaElements
+  ///
+  /// In en, this message translates to:
+  /// **'{count} elements'**
+  String browserMetaElements(int count);
+
+  /// No description provided for @browserErrAgentDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Browser control is off'**
+  String get browserErrAgentDisabled;
+
+  /// No description provided for @browserErrStaleRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Element is stale; page needs re-reading'**
+  String get browserErrStaleRef;
+
+  /// No description provided for @browserErrNotVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'Element hidden or covered'**
+  String get browserErrNotVisible;
+
+  /// No description provided for @browserErrNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Element not found'**
+  String get browserErrNotFound;
+
+  /// No description provided for @browserErrTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Page load timed out'**
+  String get browserErrTimeout;
+
+  /// No description provided for @browserErrActionTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation timed out; outcome unknown. Check the page before allowing AI to continue.'**
+  String get browserErrActionTimeout;
+
+  /// No description provided for @browserErrHumanControl.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re controlling the browser'**
+  String get browserErrHumanControl;
+
+  /// No description provided for @browserErrTabClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Tab was closed'**
+  String get browserErrTabClosed;
+
+  /// No description provided for @browserErrGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Action failed'**
+  String get browserErrGeneric;
+
+  /// No description provided for @browserDirectionUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Up'**
+  String get browserDirectionUp;
+
+  /// No description provided for @browserDirectionDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Down'**
+  String get browserDirectionDown;
+
+  /// No description provided for @browserDirectionLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get browserDirectionLeft;
+
+  /// No description provided for @browserDirectionRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get browserDirectionRight;
+
+  /// Number of tabs returned by list_tabs
+  ///
+  /// In en, this message translates to:
+  /// **'{count} tabs'**
+  String browserMetaTabs(int count);
+
+  /// No description provided for @browserTabsCurrentConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'This chat'**
+  String get browserTabsCurrentConversation;
+
+  /// No description provided for @browserTabsAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All tabs'**
+  String get browserTabsAll;
+
+  /// No description provided for @browserTabsUnassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal tabs'**
+  String get browserTabsUnassigned;
+
+  /// No description provided for @browserTabsUnknownConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Other chat'**
+  String get browserTabsUnknownConversation;
+
+  /// No description provided for @browserTabsEmptyConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'No tabs here yet. Open a page or choose a tab from All tabs.'**
+  String get browserTabsEmptyConversation;
+
+  /// No description provided for @browserTabsNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching tabs'**
+  String get browserTabsNoResults;
+
+  /// No description provided for @browserMoveToConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to this chat'**
+  String get browserMoveToConversation;
+
+  /// No description provided for @browserReopenInConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen in this chat'**
+  String get browserReopenInConversation;
+
+  /// No description provided for @browserTabBusy.
+  ///
+  /// In en, this message translates to:
+  /// **'An assistant is still using this page. Wait for it to finish or stop the task before moving it.'**
+  String get browserTabBusy;
+
+  /// No description provided for @browserLiveViewLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'All browser resources are in use. Try again when a task finishes, or close an unused page.'**
+  String get browserLiveViewLimit;
+
+  /// No description provided for @browserAskAiInOwnerConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask AI in the owning chat'**
+  String get browserAskAiInOwnerConversation;
+
+  /// No description provided for @displaySettingsPageShowBrowserPageCardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show webpage cards'**
+  String get displaySettingsPageShowBrowserPageCardsTitle;
+
+  /// No description provided for @browserObserverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'AI is using this page. Select Take over to interact.'**
+  String get browserObserverHint;
+
+  /// No description provided for @toolPermissionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Permissions'**
+  String get toolPermissionTitle;
+
+  /// No description provided for @toolPermissionRequestApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for approval'**
+  String get toolPermissionRequestApproval;
+
+  /// No description provided for @toolPermissionFullAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Full access'**
+  String get toolPermissionFullAccess;
+
+  /// No description provided for @toolPermissionRequestApprovalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Kelivo will ask before accessing files outside the workspace, running desktop commands, or using other tools that need approval.'**
+  String get toolPermissionRequestApprovalDesc;
+
+  /// No description provided for @toolPermissionFullAccessDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets this conversation access files on this device, run commands, and use enabled online tools without asking each time.'**
+  String get toolPermissionFullAccessDesc;
+
+  /// No description provided for @toolPermissionFullAccessDescMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets this conversation run tools automatically inside the sandbox and authorized folders, without asking each time.'**
+  String get toolPermissionFullAccessDescMobile;
+
+  /// No description provided for @toolPermissionUnboundHint.
+  ///
+  /// In en, this message translates to:
+  /// **'No workspace bound: this does not turn on file or shell tools.'**
+  String get toolPermissionUnboundHint;
+
+  /// No description provided for @toolPermissionScopeThisChat.
+  ///
+  /// In en, this message translates to:
+  /// **'This chat only'**
+  String get toolPermissionScopeThisChat;
+
+  /// No description provided for @toolApprovalSwitchToFullAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to full access'**
+  String get toolApprovalSwitchToFullAccess;
+
+  /// No description provided for @toolApprovalDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Denied'**
+  String get toolApprovalDenied;
+
+  /// No description provided for @toolApprovalPendingKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting approval · {kind}'**
+  String toolApprovalPendingKind(String kind);
+
+  /// No description provided for @toolApprovalRequestedPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested path'**
+  String get toolApprovalRequestedPath;
+
+  /// No description provided for @toolApprovalRealTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual target'**
+  String get toolApprovalRealTarget;
+
+  /// No description provided for @toolApprovalScopeOnce.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to this call only'**
+  String get toolApprovalScopeOnce;
+
+  /// No description provided for @toolApprovalByFullAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Ran automatically'**
+  String get toolApprovalByFullAccess;
+
+  /// No description provided for @toolApprovalDenyWithReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Deny with reason…'**
+  String get toolApprovalDenyWithReason;
+
+  /// No description provided for @toolPermissionSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t save. Permission unchanged.'**
+  String get toolPermissionSaveFailed;
+
+  /// No description provided for @toolPermissionEnabledSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Full access enabled for this chat'**
+  String get toolPermissionEnabledSnack;
+
+  /// No description provided for @toolPermissionResetSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Workspace changed · permission reset to Ask for approval'**
+  String get toolPermissionResetSnack;
+
+  /// No description provided for @toolPermissionUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get toolPermissionUndo;
+
+  /// No description provided for @wsDeniedPathOutside.
+  ///
+  /// In en, this message translates to:
+  /// **'Target is outside the authorized area. Denied.'**
+  String get wsDeniedPathOutside;
+
+  /// No description provided for @wsDeniedMountReadonly.
+  ///
+  /// In en, this message translates to:
+  /// **'Read-only mount. Can’t write.'**
+  String get wsDeniedMountReadonly;
+
+  /// No description provided for @wsDeniedSkillsReadonly.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills folder is read-only.'**
+  String get wsDeniedSkillsReadonly;
+
+  /// No description provided for @wsPathChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Target changed while awaiting approval.'**
+  String get wsPathChanged;
+
+  /// No description provided for @wsContextChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation context changed. Request expired.'**
+  String get wsContextChanged;
+
+  /// No description provided for @contextClearMarker.
+  ///
+  /// In en, this message translates to:
+  /// **'Context cleared'**
+  String get contextClearMarker;
+
+  /// No description provided for @contextCompressMarker.
+  ///
+  /// In en, this message translates to:
+  /// **'Context compressed'**
+  String get contextCompressMarker;
+
+  /// No description provided for @contextOperationUndone.
+  ///
+  /// In en, this message translates to:
+  /// **'Undone'**
+  String get contextOperationUndone;
+
+  /// No description provided for @contextOperationSuperseded.
+  ///
+  /// In en, this message translates to:
+  /// **'Included in a later summary'**
+  String get contextOperationSuperseded;
+
+  /// No description provided for @contextOperationUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo this context operation'**
+  String get contextOperationUndo;
+
+  /// No description provided for @contextSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Context summary'**
+  String get contextSummaryTitle;
+
+  /// No description provided for @contextSummaryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the summary used in subsequent requests. Saving changes does not rewrite existing replies. Attachments contribute only available text; images are not reinterpreted.'**
+  String get contextSummaryHint;
+
+  /// No description provided for @contextSummaryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'The summary cannot be empty. Use Clear context to exclude history.'**
+  String get contextSummaryEmpty;
+
+  /// No description provided for @contextRangeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Replaces {count} messages; keeps {keep} recent user messages and their replies.'**
+  String contextRangeInfo(int count, int keep);
+
+  /// No description provided for @contextTokenInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary input ≈ {before} tokens → summary ≈ {after} tokens'**
+  String contextTokenInfo(int before, int after);
+
+  /// No description provided for @contextChangeImpact.
+  ///
+  /// In en, this message translates to:
+  /// **'This change will also undo {count} affected context operations. Original messages are kept. Continue?'**
+  String contextChangeImpact(int count);
+
+  /// No description provided for @contextChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review affected context'**
+  String get contextChangeTitle;
+
+  /// No description provided for @contextChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'History changed. Reopen this action to review its current scope.'**
+  String get contextChanged;
+
+  /// No description provided for @contextSourceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary input'**
+  String get contextSourceLabel;
+
+  /// No description provided for @contextEffectiveHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Current summary and later messages'**
+  String get contextEffectiveHistory;
+
+  /// No description provided for @contextPreviousHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-read the last compression layer'**
+  String get contextPreviousHistory;
+
+  /// No description provided for @contextOriginalHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-read all original messages in this segment'**
+  String get contextOriginalHistory;
+
+  /// No description provided for @contextManualSupplement.
+  ///
+  /// In en, this message translates to:
+  /// **'Include manually edited summaries as supplements'**
+  String get contextManualSupplement;
+
+  /// No description provided for @contextSourceScopeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only history after the latest clear is included. This may include older messages outside the normal send window.'**
+  String get contextSourceScopeHint;
+
+  /// No description provided for @contextLimitedInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the selected character window is read. The rest of the replaced history is not included in the summary; original messages remain available.'**
+  String get contextLimitedInputHint;
+
+  /// No description provided for @contextNewConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new chat with the summary'**
+  String get contextNewConversation;
+
+  /// No description provided for @contextTaskWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the current reply and tools to finish'**
+  String get contextTaskWait;
+
+  /// No description provided for @contextTaskPreparing.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing compression'**
+  String get contextTaskPreparing;
+
+  /// No description provided for @contextTaskProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Compressing {done}/{total} segments'**
+  String contextTaskProgress(int done, int total);
+
+  /// No description provided for @contextTaskMerging.
+  ///
+  /// In en, this message translates to:
+  /// **'Merging summaries'**
+  String get contextTaskMerging;
+
+  /// No description provided for @contextTaskApplying.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying summary'**
+  String get contextTaskApplying;
+
+  /// No description provided for @contextTaskReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review the summary before applying'**
+  String get contextTaskReview;
+
+  /// No description provided for @contextTaskCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression complete'**
+  String get contextTaskCompleted;
+
+  /// No description provided for @contextTaskFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression failed'**
+  String get contextTaskFailed;
+
+  /// No description provided for @contextTaskCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression cancelled'**
+  String get contextTaskCancelled;
+
+  /// No description provided for @contextTaskInterrupted.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression interrupted; input is preserved'**
+  String get contextTaskInterrupted;
+
+  /// No description provided for @contextTaskQueued.
+  ///
+  /// In en, this message translates to:
+  /// **'Queued — waiting for compression'**
+  String get contextTaskQueued;
+
+  /// No description provided for @contextTaskPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending paused — cancel the queue to edit'**
+  String get contextTaskPaused;
+
+  /// No description provided for @contextTaskCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel compression'**
+  String get contextTaskCancel;
+
+  /// No description provided for @contextTaskRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry compression'**
+  String get contextTaskRetry;
+
+  /// No description provided for @contextOpenNewChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Open new chat'**
+  String get contextOpenNewChat;
+
+  /// No description provided for @contextKeepInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a positive number of user messages.'**
+  String get contextKeepInvalid;
+
+  /// No description provided for @contextOriginalMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'View original messages'**
+  String get contextOriginalMessages;
+
+  /// No description provided for @contextClearDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier chat history is excluded from future requests. System instructions, memory and tool definitions still apply.'**
+  String get contextClearDetails;
+
+  /// No description provided for @contextRestoreOperation.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore operation'**
+  String get contextRestoreOperation;
+
+  /// No description provided for @contextChangeWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the current reply and tools to finish before applying this change.'**
+  String get contextChangeWaiting;
+
+  /// No description provided for @contextBudgetExceeded.
+  ///
+  /// In en, this message translates to:
+  /// **'The estimated context exceeds this model’s limit. Shorten the summary, compress again, or choose a model with a larger context.'**
+  String get contextBudgetExceeded;
+
+  /// No description provided for @contextSummaryNotSmaller.
+  ///
+  /// In en, this message translates to:
+  /// **'The summary is not shorter than its input. Review it before applying.'**
+  String get contextSummaryNotSmaller;
+
+  /// No description provided for @contextBudgetInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated next request (including output reserve): {used} / {limit} tokens'**
+  String contextBudgetInfo(int used, String limit);
+
+  /// No description provided for @contextUndoBudgetInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'After undo: approximately {used} tokens including output reserve'**
+  String contextUndoBudgetInfo(int used);
+
+  /// No description provided for @contextUnknownLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown limit'**
+  String get contextUnknownLimit;
+
+  /// No description provided for @contextInputModeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Input: {mode} · {source}'**
+  String contextInputModeInfo(String mode, String source);
+
+  /// No description provided for @contextSampledInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the selected {count} characters were read; the summary replaces the entire selected history range.'**
+  String contextSampledInfo(int count);
+
+  /// No description provided for @contextHistoryWindowNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent history is still limited by the chat’s {count}-message sending window.'**
+  String contextHistoryWindowNote(int count);
+
+  /// No description provided for @contextOperationHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Excluded by a later clear'**
+  String get contextOperationHidden;
+
+  /// No description provided for @contextViewGenerated.
+  ///
+  /// In en, this message translates to:
+  /// **'View generated summary'**
+  String get contextViewGenerated;
+
+  /// No description provided for @contextTaskDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss status'**
+  String get contextTaskDismiss;
+
+  /// No description provided for @contextOperationActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Currently applied'**
+  String get contextOperationActive;
+
+  /// No description provided for @contextDividerCompressed.
+  ///
+  /// In en, this message translates to:
+  /// **'Context compressed'**
+  String get contextDividerCompressed;
+
+  /// No description provided for @contextDividerRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Compressing context'**
+  String get contextDividerRunning;
+
+  /// No description provided for @contextDividerFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression failed'**
+  String get contextDividerFailed;
+
+  /// No description provided for @contextDividerEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get contextDividerEdited;
+
+  /// No description provided for @contextUndoCompressTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo this compression'**
+  String get contextUndoCompressTooltip;
+
+  /// No description provided for @contextUndoClearTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo this clear'**
+  String get contextUndoClearTooltip;
+
+  /// No description provided for @contextUndoneSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Undone · {from} → {to}'**
+  String contextUndoneSnack(String from, String to);
+
+  /// No description provided for @contextRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get contextRestore;
+
+  /// No description provided for @compressTaskWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the current reply'**
+  String get compressTaskWaiting;
+
+  /// No description provided for @compressTaskWaitingApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for tool approval'**
+  String get compressTaskWaitingApproval;
+
+  /// No description provided for @compressTaskMerging.
+  ///
+  /// In en, this message translates to:
+  /// **'Merging summaries'**
+  String get compressTaskMerging;
+
+  /// No description provided for @compressTaskElapsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Part {i}/{n} · {seconds}s elapsed'**
+  String compressTaskElapsed(int i, int n, int seconds);
+
+  /// No description provided for @compressTaskRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get compressTaskRetry;
+
+  /// No description provided for @compressTaskAdjustRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust options and retry'**
+  String get compressTaskAdjustRetry;
+
+  /// No description provided for @compressTaskAbandon.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get compressTaskAbandon;
+
+  /// No description provided for @compressCancelledSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression cancelled. Current context is unchanged.'**
+  String get compressCancelledSnack;
+
+  /// No description provided for @compressStaleSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat history changed; the summary was not applied.'**
+  String get compressStaleSnack;
+
+  /// No description provided for @compressOverSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'The summary would exceed the context limit and was not applied.'**
+  String get compressOverSnack;
+
+  /// No description provided for @compressDiscardedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Context cleared; the running compression was discarded.'**
+  String get compressDiscardedSnack;
+
+  /// No description provided for @compressFailedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression failed: {reason}'**
+  String compressFailedSnack(String reason);
+
+  /// No description provided for @compressSuccessSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Context compressed · {from} → {to}'**
+  String compressSuccessSnack(String from, String to);
+
+  /// No description provided for @compressAdjust.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust'**
+  String get compressAdjust;
+
+  /// No description provided for @compressCopyResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy result'**
+  String get compressCopyResult;
+
+  /// No description provided for @chatInputBarQueuedAfterCompress.
+  ///
+  /// In en, this message translates to:
+  /// **'Sends after compression'**
+  String get chatInputBarQueuedAfterCompress;
+
+  /// No description provided for @chatInputBarQueuedPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get chatInputBarQueuedPaused;
+
+  /// No description provided for @chatInputBarQueuedPausedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression did not finish; sending stays paused'**
+  String get chatInputBarQueuedPausedReason;
+
+  /// No description provided for @chatInputBarQueuedCompressionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression failed; sending stays paused'**
+  String get chatInputBarQueuedCompressionFailed;
+
+  /// No description provided for @chatInputBarQueuedCompressionCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression cancelled; sending stays paused'**
+  String get chatInputBarQueuedCompressionCancelled;
+
+  /// No description provided for @compressUsageInput.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary input'**
+  String get compressUsageInput;
+
+  /// No description provided for @compressUsageSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Est. summary'**
+  String get compressUsageSummary;
+
+  /// No description provided for @compressUsageNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next request'**
+  String get compressUsageNext;
+
+  /// No description provided for @compressUsageOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'was {value}'**
+  String compressUsageOriginal(String value);
+
+  /// No description provided for @compressApproxTokens.
+  ///
+  /// In en, this message translates to:
+  /// **'Approx. {value} tokens'**
+  String compressApproxTokens(String value);
+
+  /// No description provided for @compressAdvanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get compressAdvanced;
+
+  /// No description provided for @compressAdvancedOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-read originals off'**
+  String get compressAdvancedOff;
+
+  /// No description provided for @compressAdvancedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-read originals on'**
+  String get compressAdvancedOn;
+
+  /// No description provided for @compressReread.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-read compressed originals'**
+  String get compressReread;
+
+  /// No description provided for @compressRereadDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Recover details lost across summaries. Uses more tokens.'**
+  String get compressRereadDesc;
+
+  /// No description provided for @compressRereadLastLayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand last layer'**
+  String get compressRereadLastLayer;
+
+  /// No description provided for @compressRereadAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All originals in segment'**
+  String get compressRereadAll;
+
+  /// No description provided for @compressIncludeManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Include manual edits · {count}'**
+  String compressIncludeManual(int count);
+
+  /// No description provided for @compressIncludeAttachments.
+  ///
+  /// In en, this message translates to:
+  /// **'Attachment text & tool results'**
+  String get compressIncludeAttachments;
+
+  /// No description provided for @compressIncludeAttachmentsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Include available attachment text and bounded tool records. Truncation is marked; images are not reinterpreted.'**
+  String get compressIncludeAttachmentsDesc;
+
+  /// No description provided for @compressNothingNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing new to compress since the last summary'**
+  String get compressNothingNew;
+
+  /// No description provided for @compressRegenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Recompress'**
+  String get compressRegenerate;
+
+  /// No description provided for @compressKeepDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the latest {count} user messages with their replies and tools. Earlier history is summarized; attachment-only messages also count.'**
+  String compressKeepDescription(int count);
+
+  /// No description provided for @compressModelGlobal.
+  ///
+  /// In en, this message translates to:
+  /// **'Global setting · fixed when started'**
+  String get compressModelGlobal;
+
+  /// No description provided for @contextDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get contextDetailTitle;
+
+  /// No description provided for @contextDetailClearTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Context cleared'**
+  String get contextDetailClearTitle;
+
+  /// No description provided for @contextDetailInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'In use'**
+  String get contextDetailInUse;
+
+  /// No description provided for @contextDetailSuperseded.
+  ///
+  /// In en, this message translates to:
+  /// **'Superseded by a later summary'**
+  String get contextDetailSuperseded;
+
+  /// No description provided for @contextDetailReplaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Replaced'**
+  String get contextDetailReplaced;
+
+  /// No description provided for @contextDetailRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get contextDetailRead;
+
+  /// No description provided for @contextDetailKept.
+  ///
+  /// In en, this message translates to:
+  /// **'Kept'**
+  String get contextDetailKept;
+
+  /// No description provided for @contextDetailModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Model · time'**
+  String get contextDetailModel;
+
+  /// No description provided for @contextDetailNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next request'**
+  String get contextDetailNext;
+
+  /// No description provided for @contextDetailAfterUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'After undo'**
+  String get contextDetailAfterUndo;
+
+  /// No description provided for @contextDetailSummaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary used in later requests'**
+  String get contextDetailSummaryLabel;
+
+  /// No description provided for @contextDetailContinueNewChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue in new chat'**
+  String get contextDetailContinueNewChat;
+
+  /// No description provided for @contextDetailViewOriginals.
+  ///
+  /// In en, this message translates to:
+  /// **'View originals'**
+  String get contextDetailViewOriginals;
+
+  /// No description provided for @contextDetailLegacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Converted from legacy clear'**
+  String get contextDetailLegacy;
+
+  /// No description provided for @contextDetailRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages {from}–{to} · {count} user messages'**
+  String contextDetailRange(String from, String to, int count);
+
+  /// No description provided for @contextDetailKeptCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest {count} user messages, replies and tools'**
+  String contextDetailKeptCount(int count);
+
+  /// No description provided for @contextDetailParts.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} segments'**
+  String contextDetailParts(int count);
+
+  /// No description provided for @contextDetailExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'Excluded history'**
+  String get contextDetailExcluded;
+
+  /// No description provided for @contextDetailCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current context'**
+  String get contextDetailCurrent;
+
+  /// No description provided for @contextDetailEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Manually edited'**
+  String get contextDetailEdited;
+
+  /// No description provided for @contextEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit summary'**
+  String get contextEditTitle;
+
+  /// No description provided for @contextEditEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary cannot be empty. Use Clear context to exclude all earlier history.'**
+  String get contextEditEmpty;
+
+  /// No description provided for @contextEditPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved; applies after the current reply'**
+  String get contextEditPending;
+
+  /// No description provided for @contextEditPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Approx. {value} tokens after saving. Editing does not change active context.'**
+  String contextEditPreview(String value);
+
+  /// No description provided for @contextEditCharacters.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} characters'**
+  String contextEditCharacters(int count);
+
+  /// No description provided for @contextImpactUndoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo earlier compression?'**
+  String get contextImpactUndoTitle;
+
+  /// No description provided for @contextImpactClearTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo earlier clear?'**
+  String get contextImpactClearTitle;
+
+  /// No description provided for @contextImpactEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save earlier summary?'**
+  String get contextImpactEditTitle;
+
+  /// No description provided for @contextImpactSourceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change compressed originals?'**
+  String get contextImpactSourceTitle;
+
+  /// No description provided for @contextImpactUndoOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get contextImpactUndoOne;
+
+  /// No description provided for @contextImpactUndoAlso.
+  ///
+  /// In en, this message translates to:
+  /// **'Also undone'**
+  String get contextImpactUndoAlso;
+
+  /// No description provided for @contextImpactKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Unchanged'**
+  String get contextImpactKeep;
+
+  /// No description provided for @contextImpactSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get contextImpactSave;
+
+  /// No description provided for @contextImpactConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo {count} nodes'**
+  String contextImpactConfirm(int count);
+
+  /// No description provided for @contextImpactSaveConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Save and undo {count} nodes'**
+  String contextImpactSaveConfirm(int count);
+
+  /// No description provided for @contextImpactDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Related summaries will be undone together. Original messages and independent nodes are kept; no model is called automatically.'**
+  String get contextImpactDescription;
+
+  /// No description provided for @contextImpactUsage.
+  ///
+  /// In en, this message translates to:
+  /// **'Approx. {from} → {to} tokens'**
+  String contextImpactUsage(String from, String to);
+
+  /// No description provided for @contextOverLimitWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo may exceed the context limit. You can still undo and recompress; sending checks the limit again.'**
+  String get contextOverLimitWarning;
+
+  /// No description provided for @branchInheritNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Only inherits context nodes active before this point'**
+  String get branchInheritNote;
+
+  /// No description provided for @contextDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get contextDone;
+
+  /// No description provided for @contextMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get contextMore;
+
+  /// No description provided for @contextEditUnknownPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage is unavailable; it will be checked again before saving.'**
+  String get contextEditUnknownPreview;
+
+  /// No description provided for @contextImpactDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete compressed originals?'**
+  String get contextImpactDeleteTitle;
+
+  /// No description provided for @contextImpactSourceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Change the originals and undo their summaries and dependent nodes together. Other messages and independent nodes are kept; no model is called.'**
+  String get contextImpactSourceDescription;
+
+  /// No description provided for @contextImpactDeleteDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the originals and undo related summaries so removed content is not sent again. Other messages and independent nodes are unchanged.'**
+  String get contextImpactDeleteDescription;
+
+  /// No description provided for @chatInputBarQueuedPausedHold.
+  ///
+  /// In en, this message translates to:
+  /// **'Input remains paused; cancel the queue to edit or send'**
+  String get chatInputBarQueuedPausedHold;
 }
 
 class _AppLocalizationsDelegate

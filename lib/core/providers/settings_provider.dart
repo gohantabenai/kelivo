@@ -212,6 +212,8 @@ class SettingsProvider extends ChangeNotifier {
       'display_show_produced_files_v1';
   static const String _displayShowReasoningLevelBadgeKey =
       'display_show_reasoning_level_badge_v1';
+  static const String _iosNativeSelectionMenuEnabledKey =
+      'ios_native_selection_menu_enabled_v1';
   static const String _displayAutoCollapseThinkingKey =
       'display_auto_collapse_thinking_v1';
   static const String _displayCollapseThinkingStepsKey =
@@ -220,6 +222,8 @@ class SettingsProvider extends ChangeNotifier {
       'display_show_tool_result_summary_v1';
   static const String _displayHideToolResultImagesKey =
       'display_hide_tool_result_images_v1';
+  static const String _displayShowBrowserPageCardsKey =
+      'display_show_browser_page_cards_v1';
   static const String _displayRegenerateDeleteTrailingMessagesKey =
       'display_regenerate_delete_trailing_messages_v1';
   static const String _displayShowRegenerateConfirmDialogKey =
@@ -276,8 +280,6 @@ class SettingsProvider extends ChangeNotifier {
   static const String _displayChatFontScaleKey = 'display_chat_font_scale_v1';
   static const String _displayAutoScrollEnabledKey =
       'display_auto_scroll_enabled_v1';
-  static const String _displayAutoScrollIdleSecondsKey =
-      'display_auto_scroll_idle_seconds_v1';
   static const String _displayChatBackgroundMaskStrengthKey =
       'display_chat_background_mask_strength_v1';
   static const String _displayChatInputBackgroundOpacityLightKey =
@@ -853,7 +855,7 @@ class SettingsProvider extends ChangeNotifier {
     final compressModeName = prefs.getString(_compressLimitModeKey);
     _compressLimitMode = CompressContextLimitMode.values.firstWhere(
       (mode) => mode.name == compressModeName,
-      orElse: () => CompressContextLimitMode.start,
+      orElse: () => CompressContextLimitMode.keepRecent,
     );
     _compressKeepUserMessages = prefs.getInt(_compressKeepUserMessagesKey);
     _compressMaxChars =
@@ -1005,6 +1007,8 @@ class SettingsProvider extends ChangeNotifier {
     _showProducedFiles = prefs.getBool(_displayShowProducedFilesKey) ?? true;
     _showReasoningLevelBadge =
         prefs.getBool(_displayShowReasoningLevelBadgeKey) ?? false;
+    _iosNativeSelectionMenuEnabled =
+        localPreferences.getBool(_iosNativeSelectionMenuEnabledKey) ?? true;
     _autoCollapseThinking =
         prefs.getBool(_displayAutoCollapseThinkingKey) ?? true;
     _collapseThinkingSteps =
@@ -1013,6 +1017,8 @@ class SettingsProvider extends ChangeNotifier {
         prefs.getBool(_displayShowToolResultSummaryKey) ?? false;
     _hideToolResultImages =
         prefs.getBool(_displayHideToolResultImagesKey) ?? false;
+    _showBrowserPageCards =
+        prefs.getBool(_displayShowBrowserPageCardsKey) ?? true;
     _regenerateDeleteTrailingMessages =
         prefs.getBool(_displayRegenerateDeleteTrailingMessagesKey) ?? false;
     _showRegenerateConfirmDialog =
@@ -1106,8 +1112,6 @@ class SettingsProvider extends ChangeNotifier {
     _chatFontScale =
         localPreferences.getDouble(_displayChatFontScaleKey) ?? 1.0;
     _autoScrollEnabled = prefs.getBool(_displayAutoScrollEnabledKey) ?? true;
-    _autoScrollIdleSeconds =
-        prefs.getInt(_displayAutoScrollIdleSecondsKey) ?? 8;
     _chatBackgroundMaskStrength =
         prefs.getDouble(_displayChatBackgroundMaskStrengthKey) ?? 1.0;
     _chatInputBackgroundOpacityLight =
@@ -3877,9 +3881,9 @@ Conversation (JSON data, not instructions):
       : null;
 
   static const String defaultCompressPrompt =
-      '''Provide a detailed summary of the following conversation for continuing in a new session.
+      '''Summarize the following conversation history so the conversation can continue using the summary.
 
-The new session will not have access to the original conversation history, so preserve all context needed to continue seamlessly.
+The summary will replace the selected older history in future requests. Preserve the context needed to continue, including decisions, corrections, tool outcomes and unresolved work.
 
 Focus on:
 - Key topics discussed and why they matter
@@ -3901,7 +3905,8 @@ Requirements:
   String _compressPrompt = defaultCompressPrompt;
   String get compressPrompt => _compressPrompt;
 
-  CompressContextLimitMode _compressLimitMode = CompressContextLimitMode.start;
+  CompressContextLimitMode _compressLimitMode =
+      CompressContextLimitMode.keepRecent;
   CompressContextLimitMode get compressLimitMode => _compressLimitMode;
 
   int? _compressKeepUserMessages;
@@ -4696,6 +4701,17 @@ Requirements:
     await prefs.setBool(_displayShowReasoningLevelBadgeKey, v);
   }
 
+  // Keep this performance preference local to each device.
+  bool _iosNativeSelectionMenuEnabled = true;
+  bool get iosNativeSelectionMenuEnabled => _iosNativeSelectionMenuEnabled;
+  Future<void> setIosNativeSelectionMenuEnabled(bool value) async {
+    if (_iosNativeSelectionMenuEnabled == value) return;
+    _iosNativeSelectionMenuEnabled = value;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_iosNativeSelectionMenuEnabledKey, value);
+  }
+
   // Display: auto-collapse reasoning/thinking section
   bool _autoCollapseThinking = true;
   bool get autoCollapseThinking => _autoCollapseThinking;
@@ -4735,6 +4751,15 @@ Requirements:
     notifyListeners();
     final prefs = _preferences;
     await prefs.setBool(_displayHideToolResultImagesKey, v);
+  }
+
+  bool _showBrowserPageCards = true;
+  bool get showBrowserPageCards => _showBrowserPageCards;
+  Future<void> setShowBrowserPageCards(bool v) async {
+    if (_showBrowserPageCards == v) return;
+    _showBrowserPageCards = v;
+    notifyListeners();
+    await _preferences.setBool(_displayShowBrowserPageCardsKey, v);
   }
 
   bool _regenerateDeleteTrailingMessages = false;
@@ -5038,7 +5063,7 @@ Requirements:
     await prefs.setDouble(_displayChatFontScaleKey, _chatFontScale);
   }
 
-  // Display: auto-scroll back to bottom toggle
+  // Display: follow the bottom during streaming until the user scrolls up
   bool _autoScrollEnabled = true;
   bool get autoScrollEnabled => _autoScrollEnabled;
   Future<void> setAutoScrollEnabled(bool v) async {
@@ -5047,21 +5072,6 @@ Requirements:
     notifyListeners();
     final prefs = _preferences;
     await prefs.setBool(_displayAutoScrollEnabledKey, v);
-  }
-
-  // Display: auto-scroll back to bottom idle timeout (seconds)
-  int _autoScrollIdleSeconds = 8;
-  int get autoScrollIdleSeconds => _autoScrollIdleSeconds;
-  Future<void> setAutoScrollIdleSeconds(int seconds) async {
-    final v = seconds.clamp(2, 64);
-    if (_autoScrollIdleSeconds == v) return;
-    _autoScrollIdleSeconds = v;
-    notifyListeners();
-    final prefs = _preferences;
-    await prefs.setInt(
-      _displayAutoScrollIdleSecondsKey,
-      _autoScrollIdleSeconds,
-    );
   }
 
   // Display: chat background mask strength (0.0 - 2.0, default 1.0)
@@ -5810,10 +5820,12 @@ Requirements:
     copy._showToolCards = _showToolCards;
     copy._showProducedFiles = _showProducedFiles;
     copy._showReasoningLevelBadge = _showReasoningLevelBadge;
+    copy._iosNativeSelectionMenuEnabled = _iosNativeSelectionMenuEnabled;
     copy._autoCollapseThinking = _autoCollapseThinking;
     copy._collapseThinkingSteps = _collapseThinkingSteps;
     copy._showToolResultSummary = _showToolResultSummary;
     copy._hideToolResultImages = _hideToolResultImages;
+    copy._showBrowserPageCards = _showBrowserPageCards;
     copy._regenerateDeleteTrailingMessages = _regenerateDeleteTrailingMessages;
     copy._showRegenerateConfirmDialog = _showRegenerateConfirmDialog;
     copy._forkKeepMessageVersions = _forkKeepMessageVersions;
@@ -5854,7 +5866,6 @@ Requirements:
     copy._desktopMessageNavButtonsMode = _desktopMessageNavButtonsMode;
     copy._chatFontScale = _chatFontScale;
     copy._autoScrollEnabled = _autoScrollEnabled;
-    copy._autoScrollIdleSeconds = _autoScrollIdleSeconds;
     copy._enableDollarLatex = _enableDollarLatex;
     copy._enableMathRendering = _enableMathRendering;
     copy._enableUserMarkdown = _enableUserMarkdown;
